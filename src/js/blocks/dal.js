@@ -8,7 +8,7 @@ const dal = {
         
     },
     initialTable() {
-        document.querySelector('#SWTable tbody').innerHTML = `
+        document.querySelector('#SWTableJS tbody').innerHTML = `
             <tr>
                   <td>Planet name</td>
                   <td>Diameter</td>
@@ -20,7 +20,7 @@ const dal = {
     },
     createTable(data) {
         this.initialTable();
-        data.map(n => { document.querySelector('#SWTable tbody').innerHTML +=
+        data.map(n => { document.querySelector('#SWTableJS tbody').innerHTML +=
             `
             <tr>
                 <td>${n.name}</td>
