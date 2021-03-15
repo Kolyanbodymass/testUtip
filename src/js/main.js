@@ -1,28 +1,12 @@
-import getPlanets from './services/ApiServices';
-
-const loadData = () => {
-    getPlanets()
-        .then(res => createTable(res.results))
-    
-}
-
-const createTable = (data) => {
-
-    data.map(n => { document.querySelector('#SWTable tbody').innerHTML +=
-        `
-        <tr>
-            <td>${n.name}</td>
-            <td>${n.diameter}</td>
-            <td>${n.climate}</td>
-            <td>${n.gravity}</td>
-            <td>${n.population}</td>
-        </tr>
-        `
-    });
-}
+import dal from './blocks/dal';
+import initialState from './blocks/initialState';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    loadData();
+    const loadButton = document.querySelector('#loadButton');
+    const deleteButton = document.querySelector('#deleteButton');
 
+    loadButton.addEventListener('click', () => dal.getData());
+    deleteButton.addEventListener('click', () => dal.createTable(initialState));
+   
 });

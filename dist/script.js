@@ -86,6 +86,74 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/blocks/dal.js":
+/*!******************************!*\
+  !*** ./src/js/blocks/dal.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_ApiServices__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/ApiServices */ "./src/js/services/ApiServices.js");
+
+const dal = {
+  getData() {
+    Object(_services_ApiServices__WEBPACK_IMPORTED_MODULE_0__["default"])().then(res => this.createTable(res.results));
+  },
+
+  initialTable() {
+    document.querySelector('#SWTable tbody').innerHTML = `
+            <tr>
+                  <td>Planet name</td>
+                  <td>Diameter</td>
+                  <td>Climate</td>
+                  <td>Gravity</td>
+                  <td>Population</td>
+            </tr>
+        `;
+  },
+
+  createTable(data) {
+    this.initialTable();
+    data.map(n => {
+      document.querySelector('#SWTable tbody').innerHTML += `
+            <tr>
+                <td>${n.name}</td>
+                <td>${n.diameter}</td>
+                <td>${n.climate}</td>
+                <td>${n.gravity}</td>
+                <td>${n.population}</td>
+            </tr>
+            `;
+    });
+  }
+
+};
+/* harmony default export */ __webpack_exports__["default"] = (dal);
+
+/***/ }),
+
+/***/ "./src/js/blocks/initialState.js":
+/*!***************************************!*\
+  !*** ./src/js/blocks/initialState.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+let initialState = [{
+  name: 'no data :(',
+  diameter: 'no data :(',
+  climate: 'no data :(',
+  gravity: 'no data :(',
+  population: 'no data :('
+}];
+/* harmony default export */ __webpack_exports__["default"] = (initialState);
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -95,29 +163,15 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _services_ApiServices__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/ApiServices */ "./src/js/services/ApiServices.js");
+/* harmony import */ var _blocks_dal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/dal */ "./src/js/blocks/dal.js");
+/* harmony import */ var _blocks_initialState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/initialState */ "./src/js/blocks/initialState.js");
 
-
-const loadData = () => {
-  Object(_services_ApiServices__WEBPACK_IMPORTED_MODULE_0__["default"])().then(res => createTable(res.results));
-};
-
-const createTable = data => {
-  data.map(n => {
-    document.querySelector('#SWTable tbody').innerHTML += `
-        <tr>
-            <td>${n.name}</td>
-            <td>${n.diameter}</td>
-            <td>${n.climate}</td>
-            <td>${n.gravity}</td>
-            <td>${n.population}</td>
-        </tr>
-        `;
-  });
-};
 
 window.addEventListener('DOMContentLoaded', () => {
-  loadData();
+  const loadButton = document.querySelector('#loadButton');
+  const deleteButton = document.querySelector('#deleteButton');
+  loadButton.addEventListener('click', () => _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].getData());
+  deleteButton.addEventListener('click', () => _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].createTable(_blocks_initialState__WEBPACK_IMPORTED_MODULE_1__["default"]));
 });
 
 /***/ }),
