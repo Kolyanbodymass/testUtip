@@ -4,13 +4,24 @@
     width: 640px;
     text-align: left;
     border-collapse: collapse;
-    background: #252F48;
     margin: 10px;
     & caption {
         color: #EDB749;
         border-bottom: 1px solid #37B5A5;
         padding: 12px 17px;
     }
+}
+
+.SWTableWrapper {
+    background: #252F48;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 // @import '../spinner/spinner.scss';

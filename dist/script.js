@@ -3852,9 +3852,7 @@ var dal = {
     var _this3 = this;
 
     if (!data) {
-      var div = document.createElement('div');
-      div.innerHTML = "\n            <div class=\"loadingio-spinner-spin-ueeauidw9bp\">\n                <div class=\"ldio-bt0gdk9jjc\">\n                <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>\n            </div>\n        ";
-      document.querySelector('.SWTableJS tbody').append(div);
+      document.querySelector('.SWTableJS tbody').innerHTML = "\n                \n                <div class=\"loadingio-spinner-spin-ueeauidw9bp\">\n                    <div class=\"ldio-bt0gdk9jjc\">\n                    <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>\n                </div>\n                   \n                \n            ";
       return;
     }
 
