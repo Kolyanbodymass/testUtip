@@ -1,4 +1,4 @@
-import dal from './blocks/dal';
+import dal, {initialState} from './blocks/dal';
 
 window.addEventListener('DOMContentLoaded', () => {
 

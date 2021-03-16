@@ -3782,12 +3782,13 @@ module.exports = g;
 /*!******************************!*\
   !*** ./src/js/blocks/dal.js ***!
   \******************************/
-/*! exports provided: state, default */
+/*! exports provided: state, initialState, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "state", function() { return state; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
@@ -3839,6 +3840,7 @@ var dal = {
     }).then(function (res) {
       return _this2.createTable(state.planets);
     });
+    this.createTable(state.planets);
   },
   emptyTable: function emptyTable() {
     document.querySelector('.SWTableJS tbody').innerHTML = "\n            <tr>\n                  <td>Planet name</td>\n                  <td>Diameter</td>\n                  <td>Climate</td>\n                  <td>Gravity</td>\n                  <td>Population</td>\n            </tr>\n        ";
@@ -3848,6 +3850,13 @@ var dal = {
   },
   createTable: function createTable(data) {
     var _this3 = this;
+
+    if (!data) {
+      var div = document.createElement('div');
+      div.innerHTML = "\n            <div class=\"loadingio-spinner-spin-ueeauidw9bp\">\n                <div class=\"ldio-bt0gdk9jjc\">\n                <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>\n            </div>\n        ";
+      document.querySelector('.SWTableJS tbody').append(div);
+      return;
+    }
 
     console.log(data);
     this.emptyTable();
@@ -3903,7 +3912,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].loadData();
   });
   deleteButton.addEventListener('click', function () {
-    return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].createTable(initialState);
+    return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].createTable(_blocks_dal__WEBPACK_IMPORTED_MODULE_0__["initialState"]);
   });
 });
 

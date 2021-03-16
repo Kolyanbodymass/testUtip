@@ -1,7 +1,7 @@
 import getPlanets from '../services/ApiServices';
 
 export let state = {};
-const initialState = [{name: 'no data :(', diameter: 'no data :(', climate: 'no data :(', gravity: 'no data :(', population: 'no data :('}];
+export const initialState = [{name: 'no data :(', diameter: 'no data :(', climate: 'no data :(', gravity: 'no data :(', population: 'no data :('}];
 
 const dal = {
 
@@ -16,6 +16,7 @@ const dal = {
         getPlanets()
             .then(res => this.setState(res.results))
             .then(res => this.createTable(state.planets))
+        this.createTable(state.planets);
         
     },
     emptyTable() {
@@ -33,6 +34,17 @@ const dal = {
         return '_' + Math.random().toString(36).substr(2, 9);
     },
     createTable(data) {
+        if (!data) {
+        let div = document.createElement('div');
+        div.innerHTML = `
+            <div class="loadingio-spinner-spin-ueeauidw9bp">
+                <div class="ldio-bt0gdk9jjc">
+                <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>
+            </div>
+        `;
+        document.querySelector('.SWTableJS tbody').append(div);
+            return;
+        }
         console.log(data);
         this.emptyTable();
         if (data.length == 1 && !data[0].id) {
