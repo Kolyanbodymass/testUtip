@@ -43,7 +43,8 @@
   border: 1px solid #333;
   margin-left: 10px;
   color: black;
-  width: 100%;
+  width: auto;
+  white-space: nowrap;
 }
 
 .SWTable td,

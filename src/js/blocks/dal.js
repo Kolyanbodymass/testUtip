@@ -11,7 +11,18 @@ const dal = {
         state.planets.forEach((item) => {
             item.id = this.getID()
         });
+        localStorage["state"] = JSON.stringify(state);
         return state;
+    },
+    initialTableForLocalStorage() {
+        if (localStorage.length != 0) {
+            const state = JSON.parse(localStorage.getItem("state"));
+            console.log(state);
+            this.setState(state.planets);
+            this.createTable(state.planets);
+        } else {
+            return;
+        }
     },
     loadData () {
         getPlanets()
@@ -79,8 +90,10 @@ const dal = {
         state.planets = state.planets.filter(p => p.id !== idString);
         if (state.planets.length == 0) {
             this.createTable(initialState);
+            localStorage.clear();
         } else {
             this.createTable(state.planets);
+            localStorage["state"] = JSON.stringify(state);
         }
         
     },
@@ -90,16 +103,16 @@ const dal = {
             return;
         } else if (!toggleSort) {
             
-            console.log(toggleSort);
             this._sort(toggleSort);
             toggleSort = true;
             this.createTable(state.planets);
+            localStorage["state"] = JSON.stringify(state);
         } else if(toggleSort) {
-
-            console.log(toggleSort);
+;
             this._sort(toggleSort);
             toggleSort = false;
             this.createTable(state.planets);
+            localStorage["state"] = JSON.stringify(state);
         }
     },
     _sort(toggleSort) {

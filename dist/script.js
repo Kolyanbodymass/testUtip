@@ -3831,7 +3831,19 @@ var dal = {
     state.planets.forEach(function (item) {
       item.id = _this.getID();
     });
+    localStorage["state"] = JSON.stringify(state);
     return state;
+  },
+  initialTableForLocalStorage: function initialTableForLocalStorage() {
+    if (localStorage.length != 0) {
+      var _state = JSON.parse(localStorage.getItem("state"));
+
+      console.log(_state);
+      this.setState(_state.planets);
+      this.createTable(_state.planets);
+    } else {
+      return;
+    }
   },
   loadData: function loadData() {
     var _this2 = this;
@@ -3887,8 +3899,10 @@ var dal = {
 
     if (state.planets.length == 0) {
       this.createTable(initialState);
+      localStorage.clear();
     } else {
       this.createTable(state.planets);
+      localStorage["state"] = JSON.stringify(state);
     }
   },
   sortingAlphabetically: function sortingAlphabetically() {
@@ -3896,19 +3910,19 @@ var dal = {
       console.log(state);
       return;
     } else if (!toggleSort) {
-      console.log(toggleSort);
-
       this._sort(toggleSort);
 
       toggleSort = true;
       this.createTable(state.planets);
+      localStorage["state"] = JSON.stringify(state);
     } else if (toggleSort) {
-      console.log(toggleSort);
+      ;
 
       this._sort(toggleSort);
 
       toggleSort = false;
       this.createTable(state.planets);
+      localStorage["state"] = JSON.stringify(state);
     }
   },
   _sort: function _sort(toggleSort) {
@@ -3948,13 +3962,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_dal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/dal */ "./src/js/blocks/dal.js");
 
 window.addEventListener('DOMContentLoaded', function () {
+  _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].initialTableForLocalStorage();
   var loadButton = document.querySelector('#loadButton');
   var deleteButton = document.querySelector('#deleteButton');
   loadButton.addEventListener('click', function () {
     return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].loadData();
   });
   deleteButton.addEventListener('click', function () {
-    return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].createTable(_blocks_dal__WEBPACK_IMPORTED_MODULE_0__["initialState"]);
+    _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].createTable(_blocks_dal__WEBPACK_IMPORTED_MODULE_0__["initialState"]);
+    localStorage.clear();
   });
   document.querySelector('.SWTableJS th:first-child').addEventListener('click', function () {
     return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].sortingAlphabetically();
