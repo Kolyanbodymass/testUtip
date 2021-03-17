@@ -3820,6 +3820,7 @@ var initialState = [{
   gravity: 'no data :(',
   population: 'no data :('
 }];
+var toggleSort = false;
 var dal = {
   setState: function setState(data) {
     var _this = this;
@@ -3888,6 +3889,45 @@ var dal = {
     } else {
       this.createTable(state.planets);
     }
+  },
+  sortingAlphabetically: function sortingAlphabetically() {
+    if (state.length == 0) {
+      console.log(state);
+    } else if (!toggleSort) {
+      console.log(toggleSort);
+
+      this._sort(toggleSort);
+
+      toggleSort = true;
+      this.createTable(state.planets);
+    } else {
+      console.log(toggleSort);
+
+      this._sort(toggleSort);
+
+      toggleSort = false;
+      this.createTable(state.planets);
+    }
+  },
+  _sort: function _sort(toggleSort) {
+    var q, w;
+
+    if (!toggleSort) {
+      q = 1;
+      w = -1;
+    } else {
+      q = -1;
+      w = 1;
+    }
+
+    state.planets = state.planets.sort(function (a, b) {
+      var nameA = a.name.toLowerCase(),
+          nameB = b.name.toLowerCase();
+      if (nameA < nameB) //сортируем строки по возрастанию
+        return q;
+      if (nameA > nameB) return w;
+      return 0;
+    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (dal);
@@ -3913,6 +3953,9 @@ window.addEventListener('DOMContentLoaded', function () {
   });
   deleteButton.addEventListener('click', function () {
     return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].createTable(_blocks_dal__WEBPACK_IMPORTED_MODULE_0__["initialState"]);
+  });
+  document.querySelector('.SWTableJS th:first-child').addEventListener('click', function () {
+    return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].sortingAlphabetically();
   });
 });
 

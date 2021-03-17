@@ -2,6 +2,7 @@ import getPlanets from '../services/ApiServices';
 
 export let state = {};
 export const initialState = [{name: 'no data :(', diameter: 'no data :(', climate: 'no data :(', gravity: 'no data :(', population: 'no data :('}];
+let toggleSort = false;
 
 const dal = {
 
@@ -81,7 +82,46 @@ const dal = {
             this.createTable(state.planets);
         }
         
-    }  
+    },
+    sortingAlphabetically() {
+        if (state.length == 0) {
+            console.log(state);
+        } else if (!toggleSort) {
+            
+            console.log(toggleSort);
+            this._sort(toggleSort);
+            toggleSort = true;
+            this.createTable(state.planets);
+        } else {
+            
+            console.log(toggleSort);
+            this._sort(toggleSort);
+            toggleSort = false;
+            this.createTable(state.planets);
+        }
+    },
+    _sort(toggleSort) {
+        let q, 
+            w;
+ 
+        if (!toggleSort) {
+            q = 1;
+            w = -1 
+        } else {
+            q = -1;
+            w = 1
+        }
+        state.planets = state.planets.sort((a, b) => {
+            let nameA = a.name.toLowerCase(), 
+                nameB = b.name.toLowerCase();
+            if (nameA < nameB) //сортируем строки по возрастанию
+              return q
+            if (nameA > nameB)
+              return w
+            return 0 
+        })
+    }
+    
 }
 
 export default dal;

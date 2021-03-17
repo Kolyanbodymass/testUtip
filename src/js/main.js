@@ -8,5 +8,5 @@ window.addEventListener('DOMContentLoaded', () => {
     loadButton.addEventListener('click', () => dal.loadData());
     deleteButton.addEventListener('click', () => dal.createTable(initialState));
 
-   
+    document.querySelector('.SWTableJS th:first-child').addEventListener('click', () => dal.sortingAlphabetically());
 });

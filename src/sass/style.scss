@@ -21,6 +21,23 @@
         overflow: auto;
         display: block;
     }
+    & th {
+        cursor: pointer;
+        position: relative;
+    }
+    & .planetName:hover::after { 
+        content: attr(data-title); 
+        position: absolute;
+        z-index: 1;
+        background: rgba(255,255,230,0.9);
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        padding: 5px 10px;
+        border: 1px solid #333;
+        margin-left: 10px;
+        color: black;
+        width: 100%;
+    }
     & td, & th {
         color: #CAD4D6;
         border-bottom: 1px solid #37B5A5;
