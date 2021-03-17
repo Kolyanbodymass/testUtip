@@ -2,7 +2,7 @@ import getPlanets from '../services/ApiServices';
 
 export let state = {};
 export const initialState = [{name: 'no data :(', diameter: 'no data :(', climate: 'no data :(', gravity: 'no data :(', population: 'no data :('}];
-let toggleSort = false;
+let toggleSort = true;
 
 const dal = {
 
@@ -45,6 +45,7 @@ const dal = {
         console.log(data);
         this.emptyTable();
         if (data.length == 1 && !data[0].id) {
+            state = {};
             data.map(n => { document.querySelector('.SWTableJS tbody').innerHTML +=
             `
             <tr>
@@ -84,16 +85,17 @@ const dal = {
         
     },
     sortingAlphabetically() {
-        if (state.length == 0) {
+        if (state.length == 0 || !state.planets) {
             console.log(state);
+            return;
         } else if (!toggleSort) {
             
             console.log(toggleSort);
             this._sort(toggleSort);
             toggleSort = true;
             this.createTable(state.planets);
-        } else {
-            
+        } else if(toggleSort) {
+
             console.log(toggleSort);
             this._sort(toggleSort);
             toggleSort = false;

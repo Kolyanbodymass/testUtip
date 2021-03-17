@@ -3820,7 +3820,7 @@ var initialState = [{
   gravity: 'no data :(',
   population: 'no data :('
 }];
-var toggleSort = false;
+var toggleSort = true;
 var dal = {
   setState: function setState(data) {
     var _this = this;
@@ -3863,6 +3863,7 @@ var dal = {
     this.emptyTable();
 
     if (data.length == 1 && !data[0].id) {
+      state = {};
       data.map(function (n) {
         document.querySelector('.SWTableJS tbody').innerHTML += "\n            <tr>\n                <td>".concat(n.name, "</td>\n                <td>").concat(n.diameter, "</td>\n                <td>").concat(n.climate, "</td>\n                <td>").concat(n.gravity, "</td>\n                <td>").concat(n.population, "</td>\n            </tr>\n            ");
       });
@@ -3891,8 +3892,9 @@ var dal = {
     }
   },
   sortingAlphabetically: function sortingAlphabetically() {
-    if (state.length == 0) {
+    if (state.length == 0 || !state.planets) {
       console.log(state);
+      return;
     } else if (!toggleSort) {
       console.log(toggleSort);
 
@@ -3900,7 +3902,7 @@ var dal = {
 
       toggleSort = true;
       this.createTable(state.planets);
-    } else {
+    } else if (toggleSort) {
       console.log(toggleSort);
 
       this._sort(toggleSort);
