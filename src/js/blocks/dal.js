@@ -14,9 +14,11 @@ const dal = {
     },
     loadData () {
         getPlanets()
+            .then(res => {
+                this.createTable(res.results);
+                return res;})
             .then(res => this.setState(res.results))
-            .then(res => this.createTable(state.planets))
-        this.createTable(state.planets);        
+        this.createTable()
     },
     emptyTable() {
         document.querySelector('.SWTableJS tbody').innerHTML = ``;

@@ -3836,11 +3836,13 @@ var dal = {
     var _this2 = this;
 
     Object(_services_ApiServices__WEBPACK_IMPORTED_MODULE_7__["default"])().then(function (res) {
-      return _this2.setState(res.results);
+      _this2.createTable(res.results);
+
+      return res;
     }).then(function (res) {
-      return _this2.createTable(state.planets);
+      return _this2.setState(res.results);
     });
-    this.createTable(state.planets);
+    this.createTable();
   },
   emptyTable: function emptyTable() {
     document.querySelector('.SWTableJS tbody').innerHTML = "";
