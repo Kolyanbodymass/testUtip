@@ -3843,7 +3843,7 @@ var dal = {
     this.createTable(state.planets);
   },
   emptyTable: function emptyTable() {
-    document.querySelector('.SWTableJS tbody').innerHTML = "\n            <tr>\n                  <td>Planet name</td>\n                  <td>Diameter</td>\n                  <td>Climate</td>\n                  <td>Gravity</td>\n                  <td>Population</td>\n            </tr>\n        ";
+    document.querySelector('.SWTableJS tbody').innerHTML = "";
   },
   getID: function getID() {
     return '_' + Math.random().toString(36).substr(2, 9);
@@ -3865,7 +3865,7 @@ var dal = {
       });
     } else {
       data.map(function (n) {
-        document.querySelector('.SWTableJS tbody').innerHTML += "\n            <tr>\n                <td>".concat(n.name, "</td>\n                <td>").concat(n.diameter, "</td>\n                <td>").concat(n.climate, "</td>\n                <td>").concat(n.gravity, "</td>\n                <td>").concat(n.population, "</td>\n                <td><button id=\"del_string\" value=").concat(n.id, ">Del</button></td>\n            </tr>\n            ");
+        document.querySelector('.SWTableJS tbody').innerHTML += "\n            <tr>\n                <td>".concat(n.name, "</td>\n                <td>").concat(n.diameter, "</td>\n                <td>").concat(n.climate, "</td>\n                <td>").concat(n.gravity, "</td>\n                <td>").concat(n.population, "</td>\n                <td class=\"tdDel\"><button id=\"del_string\" value=").concat(n.id, ">Del</button></td>\n            </tr>\n            ");
       });
     }
 

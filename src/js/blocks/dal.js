@@ -19,15 +19,7 @@ const dal = {
         this.createTable(state.planets);        
     },
     emptyTable() {
-        document.querySelector('.SWTableJS tbody').innerHTML = `
-            <tr>
-                  <td>Planet name</td>
-                  <td>Diameter</td>
-                  <td>Climate</td>
-                  <td>Gravity</td>
-                  <td>Population</td>
-            </tr>
-        `;
+        document.querySelector('.SWTableJS tbody').innerHTML = ``;
     },
     getID() {
         return '_' + Math.random().toString(36).substr(2, 9);
@@ -70,7 +62,7 @@ const dal = {
                 <td>${n.climate}</td>
                 <td>${n.gravity}</td>
                 <td>${n.population}</td>
-                <td><button id="del_string" value=${n.id}>Del</button></td>
+                <td class="tdDel"><button id="del_string" value=${n.id}>Del</button></td>
             </tr>
             `
             });
