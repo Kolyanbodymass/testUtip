@@ -17,10 +17,6 @@
   border-bottom: 2px solid #37B5A5;
 }
 
-.SWTable thead th:last-child {
-  border-right: none;
-}
-
 .SWTable tbody {
   max-height: 200px;
   overflow: auto;
@@ -67,6 +63,10 @@
 
 .SWTable .tdDel {
   border-top: 1px solid #37B5A5;
+}
+
+.SWTable #del_string {
+  cursor: pointer;
 }
 
 .SWTableWrapper {

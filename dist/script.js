@@ -3778,6 +3778,63 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./src/js/blocks/createTable.js":
+/*!**************************************!*\
+  !*** ./src/js/blocks/createTable.js ***!
+  \**************************************/
+/*! exports provided: createTable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTable", function() { return createTable; });
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _delString__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./delString */ "./src/js/blocks/delString.js");
+
+
+
+
+ // import {state} from './dal';
+
+var createTable = function createTable(data) {
+  if (!data) {
+    document.querySelector('.SWTableJS tbody').innerHTML = "\n            <div class=\"loadingio-spinner-spin-ueeauidw9bp\">\n                <div class=\"ldio-bt0gdk9jjc\">\n                <div><div></div></div><div><div></div></div><div><div></div>\n                </div><div><div></div></div><div><div></div></div><div><div>\n                </div></div><div><div></div></div><div><div></div></div></div>\n            </div>\n        ";
+    return;
+  }
+
+  ;
+  emptyTable();
+
+  if (data.length == 1 && !data[0].id) {
+    data.map(function (n) {
+      document.querySelector('.SWTableJS tbody').innerHTML += "\n            <tr>\n                <td>".concat(n.name, "</td>\n                <td>").concat(n.diameter, "</td>\n                <td>").concat(n.climate, "</td>\n                <td>").concat(n.gravity, "</td>\n                <td>").concat(n.population, "</td>\n            </tr>\n        ");
+    });
+  } else {
+    data.map(function (n) {
+      document.querySelector('.SWTableJS tbody').innerHTML += "\n            <tr>\n                <td>".concat(n.name, "</td>\n                <td>").concat(n.diameter, "</td>\n                <td>").concat(n.climate, "</td>\n                <td>").concat(n.gravity, "</td>\n                <td>").concat(n.population, "</td>\n                <td><button id=\"del_string\" value=").concat(n.id, ">Del</button></td>\n            </tr>\n        ");
+    });
+  }
+
+  document.querySelectorAll('#del_string').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      return Object(_delString__WEBPACK_IMPORTED_MODULE_4__["delString"])(e);
+    });
+  });
+};
+
+var emptyTable = function emptyTable() {
+  document.querySelector('.SWTableJS tbody').innerHTML = "";
+};
+
+/***/ }),
+
 /***/ "./src/js/blocks/dal.js":
 /*!******************************!*\
   !*** ./src/js/blocks/dal.js ***!
@@ -3795,18 +3852,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
 /* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
-/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
-/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
-/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _services_ApiServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/ApiServices */ "./src/js/services/ApiServices.js");
-
-
-
+/* harmony import */ var _services_ApiServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/ApiServices */ "./src/js/services/ApiServices.js");
+/* harmony import */ var _createTable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createTable */ "./src/js/blocks/createTable.js");
 
 
 
@@ -3820,7 +3867,6 @@ var initialState = [{
   gravity: 'no data :(',
   population: 'no data :('
 }];
-var toggleSort = true;
 var dal = {
   setState: function setState(data) {
     var _this = this;
@@ -3834,119 +3880,142 @@ var dal = {
     localStorage["state"] = JSON.stringify(state);
     return state;
   },
-  initialTableForLocalStorage: function initialTableForLocalStorage() {
-    if (localStorage.length != 0) {
-      var _state = JSON.parse(localStorage.getItem("state"));
-
-      console.log(_state);
-      this.setState(_state.planets);
-      this.createTable(_state.planets);
-    } else {
-      return;
-    }
-  },
   loadData: function loadData() {
     var _this2 = this;
 
-    Object(_services_ApiServices__WEBPACK_IMPORTED_MODULE_7__["default"])().then(function (res) {
-      _this2.createTable(res.results);
-
+    Object(_services_ApiServices__WEBPACK_IMPORTED_MODULE_3__["default"])().then(function (res) {
+      Object(_createTable__WEBPACK_IMPORTED_MODULE_4__["createTable"])(res.results);
       return res;
     }).then(function (res) {
       return _this2.setState(res.results);
     });
-    this.createTable();
-  },
-  emptyTable: function emptyTable() {
-    document.querySelector('.SWTableJS tbody').innerHTML = "";
+    Object(_createTable__WEBPACK_IMPORTED_MODULE_4__["createTable"])();
   },
   getID: function getID() {
     return '_' + Math.random().toString(36).substr(2, 9);
-  },
-  createTable: function createTable(data) {
-    var _this3 = this;
-
-    if (!data) {
-      document.querySelector('.SWTableJS tbody').innerHTML = "\n                \n                <div class=\"loadingio-spinner-spin-ueeauidw9bp\">\n                    <div class=\"ldio-bt0gdk9jjc\">\n                    <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>\n                </div>\n                   \n                \n            ";
-      return;
-    }
-
-    console.log(data);
-    this.emptyTable();
-
-    if (data.length == 1 && !data[0].id) {
-      state = {};
-      data.map(function (n) {
-        document.querySelector('.SWTableJS tbody').innerHTML += "\n            <tr>\n                <td>".concat(n.name, "</td>\n                <td>").concat(n.diameter, "</td>\n                <td>").concat(n.climate, "</td>\n                <td>").concat(n.gravity, "</td>\n                <td>").concat(n.population, "</td>\n            </tr>\n            ");
-      });
-    } else {
-      data.map(function (n) {
-        document.querySelector('.SWTableJS tbody').innerHTML += "\n            <tr>\n                <td>".concat(n.name, "</td>\n                <td>").concat(n.diameter, "</td>\n                <td>").concat(n.climate, "</td>\n                <td>").concat(n.gravity, "</td>\n                <td>").concat(n.population, "</td>\n                <td class=\"tdDel\"><button id=\"del_string\" value=").concat(n.id, ">Del</button></td>\n            </tr>\n            ");
-      });
-    }
-
-    document.querySelectorAll('#del_string').forEach(function (item) {
-      item.addEventListener('click', function (e) {
-        return _this3.delString(e);
-      });
-    });
-  },
-  delString: function delString(e) {
-    var idString = e.target.value;
-    state.planets = state.planets.filter(function (p) {
-      return p.id !== idString;
-    });
-
-    if (state.planets.length == 0) {
-      this.createTable(initialState);
-      localStorage.clear();
-    } else {
-      this.createTable(state.planets);
-      localStorage["state"] = JSON.stringify(state);
-    }
-  },
-  sortingAlphabetically: function sortingAlphabetically() {
-    if (state.length == 0 || !state.planets) {
-      console.log(state);
-      return;
-    } else if (!toggleSort) {
-      this._sort(toggleSort);
-
-      toggleSort = true;
-      this.createTable(state.planets);
-      localStorage["state"] = JSON.stringify(state);
-    } else if (toggleSort) {
-      ;
-
-      this._sort(toggleSort);
-
-      toggleSort = false;
-      this.createTable(state.planets);
-      localStorage["state"] = JSON.stringify(state);
-    }
-  },
-  _sort: function _sort(toggleSort) {
-    var q, w;
-
-    if (!toggleSort) {
-      q = 1;
-      w = -1;
-    } else {
-      q = -1;
-      w = 1;
-    }
-
-    state.planets = state.planets.sort(function (a, b) {
-      var nameA = a.name.toLowerCase(),
-          nameB = b.name.toLowerCase();
-      if (nameA < nameB) //сортируем строки по возрастанию
-        return q;
-      if (nameA > nameB) return w;
-      return 0;
-    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (dal);
+
+/***/ }),
+
+/***/ "./src/js/blocks/delString.js":
+/*!************************************!*\
+  !*** ./src/js/blocks/delString.js ***!
+  \************************************/
+/*! exports provided: delString */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "delString", function() { return delString; });
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _dal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dal */ "./src/js/blocks/dal.js");
+/* harmony import */ var _createTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createTable */ "./src/js/blocks/createTable.js");
+
+
+
+var delString = function delString(e) {
+  var idString = e.target.value;
+  _dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets = _dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets.filter(function (p) {
+    return p.id !== idString;
+  });
+
+  if (_dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets.length == 0) {
+    Object(_createTable__WEBPACK_IMPORTED_MODULE_2__["createTable"])(_dal__WEBPACK_IMPORTED_MODULE_1__["initialState"]);
+    localStorage.clear();
+  } else {
+    Object(_createTable__WEBPACK_IMPORTED_MODULE_2__["createTable"])(_dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets);
+    localStorage["state"] = JSON.stringify(_dal__WEBPACK_IMPORTED_MODULE_1__["state"]);
+  }
+};
+
+/***/ }),
+
+/***/ "./src/js/blocks/saveInLocalStorage.js":
+/*!*********************************************!*\
+  !*** ./src/js/blocks/saveInLocalStorage.js ***!
+  \*********************************************/
+/*! exports provided: initialTableForLocalStorage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialTableForLocalStorage", function() { return initialTableForLocalStorage; });
+/* harmony import */ var _dal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dal */ "./src/js/blocks/dal.js");
+/* harmony import */ var _createTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createTable */ "./src/js/blocks/createTable.js");
+
+
+var initialTableForLocalStorage = function initialTableForLocalStorage() {
+  if (localStorage.length != 0) {
+    var state = JSON.parse(localStorage.getItem("state"));
+    _dal__WEBPACK_IMPORTED_MODULE_0__["default"].setState(state.planets);
+    Object(_createTable__WEBPACK_IMPORTED_MODULE_1__["createTable"])(state.planets);
+  } else {
+    return;
+  }
+};
+
+/***/ }),
+
+/***/ "./src/js/blocks/sort.js":
+/*!*******************************!*\
+  !*** ./src/js/blocks/sort.js ***!
+  \*******************************/
+/*! exports provided: sortingAlphabetically */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortingAlphabetically", function() { return sortingAlphabetically; });
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _dal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dal */ "./src/js/blocks/dal.js");
+/* harmony import */ var _createTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createTable */ "./src/js/blocks/createTable.js");
+
+
+
+var toggleSort = true;
+var sortingAlphabetically = function sortingAlphabetically() {
+  if (_dal__WEBPACK_IMPORTED_MODULE_1__["state"].length == 0 || !_dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets) {
+    return;
+  } else if (!toggleSort) {
+    _sort(toggleSort);
+
+    toggleSort = true;
+    Object(_createTable__WEBPACK_IMPORTED_MODULE_2__["createTable"])(_dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets);
+    localStorage["state"] = JSON.stringify(_dal__WEBPACK_IMPORTED_MODULE_1__["state"]);
+  } else if (toggleSort) {
+    ;
+
+    _sort(toggleSort);
+
+    toggleSort = false;
+    Object(_createTable__WEBPACK_IMPORTED_MODULE_2__["createTable"])(_dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets);
+    localStorage["state"] = JSON.stringify(_dal__WEBPACK_IMPORTED_MODULE_1__["state"]);
+  }
+};
+
+var _sort = function _sort(toggleSort) {
+  var q, w;
+
+  if (!toggleSort) {
+    q = 1;
+    w = -1;
+  } else {
+    q = -1;
+    w = 1;
+  }
+
+  _dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets = _dal__WEBPACK_IMPORTED_MODULE_1__["state"].planets.sort(function (a, b) {
+    var nameA = a.name.toLowerCase(),
+        nameB = b.name.toLowerCase();
+    if (nameA < nameB) return q;
+    if (nameA > nameB) return w;
+    return 0;
+  });
+};
 
 /***/ }),
 
@@ -3960,20 +4029,26 @@ var dal = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_dal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/dal */ "./src/js/blocks/dal.js");
+/* harmony import */ var _blocks_saveInLocalStorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/saveInLocalStorage */ "./src/js/blocks/saveInLocalStorage.js");
+/* harmony import */ var _blocks_createTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/createTable */ "./src/js/blocks/createTable.js");
+/* harmony import */ var _blocks_sort__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/sort */ "./src/js/blocks/sort.js");
+
+
+
 
 window.addEventListener('DOMContentLoaded', function () {
-  _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].initialTableForLocalStorage();
+  Object(_blocks_saveInLocalStorage__WEBPACK_IMPORTED_MODULE_1__["initialTableForLocalStorage"])();
   var loadButton = document.querySelector('#loadButton');
   var deleteButton = document.querySelector('#deleteButton');
   loadButton.addEventListener('click', function () {
     return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].loadData();
   });
   deleteButton.addEventListener('click', function () {
-    _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].createTable(_blocks_dal__WEBPACK_IMPORTED_MODULE_0__["initialState"]);
+    Object(_blocks_createTable__WEBPACK_IMPORTED_MODULE_2__["createTable"])(_blocks_dal__WEBPACK_IMPORTED_MODULE_0__["initialState"]);
     localStorage.clear();
   });
   document.querySelector('.SWTableJS th:first-child').addEventListener('click', function () {
-    return _blocks_dal__WEBPACK_IMPORTED_MODULE_0__["default"].sortingAlphabetically();
+    return Object(_blocks_sort__WEBPACK_IMPORTED_MODULE_3__["sortingAlphabetically"])();
   });
 });
 

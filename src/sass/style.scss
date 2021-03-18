@@ -12,9 +12,6 @@
     & thead {
         display: block;
         border-bottom: 2px solid #37B5A5;
-        & th:last-child {
-            border-right: none;
-        }
     }
     & tbody {
         max-height: 200px;
@@ -56,14 +53,15 @@
     & .tdDel {
         border-top: 1px solid #37B5A5;
     }
+    & #del_string {
+        cursor: pointer;
+    }
 }
 
 .SWTableWrapper {
     background: #252F48;
     margin-bottom: 15px;
 }
-
-
 
 .wrapper {
     display: flex;
@@ -72,5 +70,3 @@
     justify-content: center;
     height: 100vh;
 }
-
-// @import '../spinner/spinner.scss';
