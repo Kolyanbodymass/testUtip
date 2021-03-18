@@ -53,9 +53,6 @@
     & .tdDel {
         border-top: 1px solid #37B5A5;
     }
-    & #del_string {
-        cursor: pointer;
-    }
 }
 
 .SWTableWrapper {
@@ -69,4 +66,23 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+}
+
+button {
+    cursor: pointer;
+    background: #4b484e;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-family: "Lucida Sans Unicode","Lucida Grande",Sans-Serif;
+    font-size: 14px;
+    color: #edb749;
+    transition-duration: .4s;
+    &:hover {
+        background: #38353a;
+    }
+    &:active, &:focus {
+        border: none;
+        outline: none;
+    }
 }

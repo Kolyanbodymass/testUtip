@@ -8,18 +8,19 @@ const dal = {
 
     setState(data) {
         state = {planets: data};
-        state.planets.forEach((item) => {
-            item.id = this.getID()
-        });
         localStorage["state"] = JSON.stringify(state);
         return state;
     },
     loadData () {
         getPlanets()
+        .then(res => {res.results.forEach((item) => {
+            item.id = this.getID()});
+            return res.results;
+        })
             .then(res => {
-                createTable(res.results);
+                createTable(res);
                 return res;})
-            .then(res => this.setState(res.results))
+            .then(res => this.setState(res))
         createTable()
     },
     getID() {

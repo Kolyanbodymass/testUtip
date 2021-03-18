@@ -3869,25 +3869,25 @@ var initialState = [{
 }];
 var dal = {
   setState: function setState(data) {
-    var _this = this;
-
     state = {
       planets: data
     };
-    state.planets.forEach(function (item) {
-      item.id = _this.getID();
-    });
     localStorage["state"] = JSON.stringify(state);
     return state;
   },
   loadData: function loadData() {
-    var _this2 = this;
+    var _this = this;
 
     Object(_services_ApiServices__WEBPACK_IMPORTED_MODULE_3__["default"])().then(function (res) {
-      Object(_createTable__WEBPACK_IMPORTED_MODULE_4__["createTable"])(res.results);
+      res.results.forEach(function (item) {
+        item.id = _this.getID();
+      });
+      return res.results;
+    }).then(function (res) {
+      Object(_createTable__WEBPACK_IMPORTED_MODULE_4__["createTable"])(res);
       return res;
     }).then(function (res) {
-      return _this2.setState(res.results);
+      return _this.setState(res);
     });
     Object(_createTable__WEBPACK_IMPORTED_MODULE_4__["createTable"])();
   },
